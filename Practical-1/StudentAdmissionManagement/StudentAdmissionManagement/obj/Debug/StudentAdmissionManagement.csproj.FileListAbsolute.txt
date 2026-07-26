@@ -1,0 +1,7 @@
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\obj\Debug\StudentAdmissionManagement.csproj.AssemblyReference.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\obj\Debug\StudentAdmissionManagement.csproj.CoreCompileInputs.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\bin\Debug\StudentAdmissionManagement.exe.config
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\bin\Debug\StudentAdmissionManagement.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\bin\Debug\StudentAdmissionManagement.pdb
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\obj\Debug\StudentAdmissionManagement.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-1\StudentAdmissionManagement\StudentAdmissionManagement\obj\Debug\StudentAdmissionManagement.pdb
