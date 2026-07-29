@@ -1,0 +1,7 @@
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\bin\Debug\Employee Payroll System.exe.config
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\bin\Debug\Employee Payroll System.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\bin\Debug\Employee Payroll System.pdb
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\obj\Debug\Employee Payroll System.csproj.AssemblyReference.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\obj\Debug\Employee Payroll System.csproj.CoreCompileInputs.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\obj\Debug\Employee Payroll System.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-2\Employee Payroll System\Employee Payroll System\obj\Debug\Employee Payroll System.pdb
