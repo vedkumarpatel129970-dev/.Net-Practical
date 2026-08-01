@@ -1,0 +1,7 @@
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\bin\Debug\Expense Tracking Module.exe.config
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\bin\Debug\Expense Tracking Module.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\bin\Debug\Expense Tracking Module.pdb
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\obj\Debug\Expense Tracking Module.csproj.AssemblyReference.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\obj\Debug\Expense Tracking Module.csproj.CoreCompileInputs.cache
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\obj\Debug\Expense Tracking Module.exe
+C:\Users\ved\OneDrive\Desktop\.NET Practical\Practical-3\Expense Tracking Module\Expense Tracking Module\obj\Debug\Expense Tracking Module.pdb
