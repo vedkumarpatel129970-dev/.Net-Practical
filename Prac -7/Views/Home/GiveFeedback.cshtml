@@ -1,0 +1,99 @@
+﻿
+@model Practical7.Models.Feedback
+
+@{
+    ViewBag.Title = "Give Feedback";
+}
+
+<div class="page-heading">
+    <h2>Share Your Feedback</h2>
+    <p>Complete the form below to share your learning experience.</p>
+</div>
+
+<div class="form-card">
+    @using (Html.BeginForm("GiveFeedback", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(
+            true, "", new { @class = "validation-summary" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.EnrollmentNumber, "Enrollment Number")
+            @Html.TextBoxFor(m => m.EnrollmentNumber,
+                new
+                     {
+                    @class = "form-control",
+                    placeholder = "e.g. 01CE1234"
+                })
+            @Html.ValidationMessageFor(
+                m => m.EnrollmentNumber, "", new { @class = "field-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.StudentName, "Student Name")
+            @Html.TextBoxFor(m => m.StudentName,
+                new
+                     {
+                    @class = "form-control",
+                    placeholder = "Enter your full name"
+                })
+            @Html.ValidationMessageFor(
+                m => m.StudentName, "", new { @class = "field-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Subject, "Select Subject")
+            @Html.DropDownListFor(
+                m => m.Subject,
+                (SelectList)ViewBag.Subjects,
+                "-- Choose a subject --",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(
+                m => m.Subject, "", new { @class = "field-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Rating, "Your Rating (1 to 5)")
+            @Html.DropDownListFor(
+                m => m.Rating,
+                new SelectList(new[]
+                {
+                    new { Value = 1, Text = "1 - Needs Improvement" },
+                    new { Value = 2, Text = "2 - Fair" },
+                    new { Value = 3, Text = "3 - Good" },
+                    new { Value = 4, Text = "4 - Very Good" },
+                    new { Value = 5, Text = "5 - Excellent" }
+                }, "Value", "Text"),
+                "-- Select rating --",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(
+                m => m.Rating, "", new { @class = "field-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Comment, "Comments (Optional)")
+            @Html.TextAreaFor(m => m.Comment,
+                new
+                     {
+                    @class = "form-control",
+                    rows = "4",
+                    placeholder = "Write your suggestions here..."
+                })
+            @Html.ValidationMessageFor(
+                m => m.Comment, "", new { @class = "field-error" })
+        </div>
+
+        <button type="submit" class="btn-primary submit-btn">
+            Submit Feedback
+        </button>
+
+        @Html.ActionLink(
+            "Back to Home", "Index", "Home",
+            null, new { @class = "back-link" })
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="hero">
+    <span class="eyebrow">STUDENT EXPERIENCE PORTAL</span>
+    <h2>Campus Voice</h2>
+    <p>
+        Your opinions help us build a better learning experience.
+        Share your thoughts about subjects and teaching.
+    </p>
+
+    <div class="hero-buttons">
+        @Html.ActionLink(
+            "Give Feedback", "GiveFeedback", "Home",
+            null, new { @class = "btn-primary" })
+
+        @Html.ActionLink(
+            "View Feedback", "ViewFeedback", "Home",
+            null, new { @class = "btn-secondary" })
+    </div>
+</div>
+
+<div class="info-grid">
+    <div class="info-card">
+        <div class="card-icon">01</div>
+        <h3>Share Your Views</h3>
+        <p>Tell us about your classroom and learning experience.</p>
+    </div>
+
+    <div class="info-card">
+        <div class="card-icon">02</div>
+        <h3>Rate Your Subjects</h3>
+        <p>Give a rating from 1 to 5 for your selected subject.</p>
+    </div>
+
+    <div class="info-card">
+        <div class="card-icon">03</div>
+        <h3>Make an Impact</h3>
+        <p>Your suggestions help improve academic quality.</p>
+    </div>
+</div>

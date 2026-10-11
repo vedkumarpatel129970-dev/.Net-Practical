@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title - Campus Voice</title>
+
+    @Styles.Render("~/Content/css")
+    <link href="@Url.Content("~/Content/Site.css")"
+          rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @Html.Partial("_Header")
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <p>Campus Voice &copy; @DateTime.Now.Year</p>
+        <p>Department of Computer Engineering</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
