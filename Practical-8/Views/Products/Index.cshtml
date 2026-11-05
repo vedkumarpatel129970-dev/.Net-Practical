@@ -1,0 +1,107 @@
+@model IEnumerable<Practical8.Models.Product>
+@{
+    ViewBag.Title = "Inventory Dashboard";
+}
+
+<section class="welcome-row">
+    <div>
+        <span class="eyebrow">INVENTORY OVERVIEW</span>
+        <h1>Inventory Dashboard</h1>
+        <p class="muted">Manage your products, stock and pricing in one place.</p>
+    </div>
+    @Html.ActionLink("+ Add Product", "Create", null, new { @class = "btn btn-primary" })
+</section>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert-success">@TempData["Success"]</div>
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon purple">▦</div>
+        <div><span class="stat-label">Total Products</span><strong>@ViewBag.TotalProducts</strong></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon blue">▤</div>
+        <div><span class="stat-label">Total Units in Stock</span><strong>@ViewBag.TotalUnits</strong></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon orange">!</div>
+        <div><span class="stat-label">Low Stock Items</span><strong>@ViewBag.LowStock</strong></div>
+    </div>
+</div>
+
+<div class="content-card">
+    <div class="table-heading">
+        <div>
+            <h2>Product List</h2>
+            <p class="muted">All products currently stored in your inventory.</p>
+        </div>
+        <input type="text" id="productSearch" class="search-box" placeholder="Search products..." />
+    </div>
+
+    <div class="table-responsive">
+        <table class="product-table" id="productsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>PRODUCT</th>
+                    <th>CATEGORY</th>
+                    <th>QUANTITY</th>
+                    <th>PRICE</th>
+                    <th>STATUS</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="id-cell">#@item.ProductId</td>
+                        <td><span class="product-name">@item.ProductName</span></td>
+                        <td><span class="category-chip">@item.Category</span></td>
+                        <td>@item.Quantity</td>
+                        <td class="price-cell">₹@item.Price.ToString("N2")</td>
+                        <td>
+                            @if (item.Quantity <= 5)
+                            { <span class="status low">Low Stock</span> }
+                            else
+                            { <span class="status available">Available</span> }
+                        </td>
+                        <td>
+                            <div class="action-row">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn-small btn-edit" })
+                                @using (Html.BeginForm("Delete", "Products", new { id = item.ProductId }, FormMethod.Post, new { @class = "inline-form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn-small btn-delete"
+                                            onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="7" class="empty-state">No products found. Click “Add Product” to create your first product.</td></tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+<script>
+    document.getElementById("productSearch").addEventListener("keyup", function () {
+        var search = this.value.toLowerCase();
+        var rows = document.querySelectorAll("#productsTable tbody tr");
+        rows.forEach(function (row) {
+            row.style.display = row.innerText.toLowerCase().indexOf(search) >= 0 ? "" : "none";
+        });
+    });
+</script>
+}
