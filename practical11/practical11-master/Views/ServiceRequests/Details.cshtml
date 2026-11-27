@@ -1,0 +1,47 @@
+@model practical11.Models.ServiceRequest
+@{
+    ViewData["Title"] = $"Request #{Model.Id}";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+                <div class="eyebrow-label">Request Details</div>
+                <h1 class="h2 fw-bold text-navy mb-0">Service Request #@Model.Id</h1>
+            </div>
+            <div class="d-flex gap-2">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary fw-semibold">Edit Request</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger fw-semibold">Delete</a>
+            </div>
+        </div>
+
+        <div class="campus-card p-4 p-md-5">
+            <dl class="row mb-0 gy-3">
+                <dt class="col-sm-4 text-muted fw-medium">Student Name</dt>
+                <dd class="col-sm-8 fw-semibold text-dark mb-0">@Model.StudentName</dd>
+
+                <dt class="col-sm-4 text-muted fw-medium border-top pt-3">Department</dt>
+                <dd class="col-sm-8 text-dark border-top pt-3 mb-0">@Model.Department</dd>
+
+                <dt class="col-sm-4 text-muted fw-medium border-top pt-3">Issue</dt>
+                <dd class="col-sm-8 fw-semibold text-dark border-top pt-3 mb-0">@Model.Issue</dd>
+
+                <dt class="col-sm-4 text-muted fw-medium border-top pt-3">Description</dt>
+                <dd class="col-sm-8 text-dark border-top pt-3 mb-0">@Model.Description</dd>
+
+                <dt class="col-sm-4 text-muted fw-medium border-top pt-3">Status</dt>
+                <dd class="col-sm-8 border-top pt-3 mb-0">
+                    <partial name="_StatusBadge" model="Model.Status" />
+                </dd>
+
+                <dt class="col-sm-4 text-muted fw-medium border-top pt-3">Created At</dt>
+                <dd class="col-sm-8 text-dark border-top pt-3 mb-0">@Model.CreatedAt.ToString("dd MMM yyyy, hh:mm tt")</dd>
+            </dl>
+
+            <div class="mt-4 pt-3 border-top">
+                <a asp-action="Index" class="btn btn-light border fw-semibold">Back to Requests</a>
+            </div>
+        </div>
+    </div>
+</div>

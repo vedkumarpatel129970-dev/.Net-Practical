@@ -1,0 +1,158 @@
+@model practical11.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="hero-banner p-4 p-md-5 mb-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+            <div class="hero-eyebrow mb-2">Campus Services &middot; One Place</div>
+            <h1 class="fw-bold display-6 mb-2">Smart Campus Service Portal</h1>
+            <p class="mb-4 text-white-50 fs-6" style="max-width: 560px;">
+                Submit and track student service requests, monitor resolution progress, and stay updated with upcoming campus events.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-controller="ServiceRequests" asp-action="Create" class="btn btn-light fw-semibold text-navy px-3 py-2">
+                    + Submit a Request
+                </a>
+                <a asp-controller="CampusEvents" asp-action="Index" class="btn btn-outline-light fw-semibold px-3 py-2">
+                    Explore Events
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 d-none d-lg-flex justify-content-lg-end">
+            <div class="hero-side-card d-flex align-items-center gap-3">
+                <div class="hero-sc-box">SC</div>
+                <div>
+                    <div class="fw-semibold">Connected Campus</div>
+                    <div class="small text-white-50">Live SQL Server Portal</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="stat-card h-100">
+            <div class="text-muted small fw-medium mb-2">Total Requests</div>
+            <div class="stat-value text-navy mb-1">@Model.TotalRequests</div>
+            <div class="text-muted small">All submitted requests</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card h-100">
+            <div class="text-muted small fw-medium mb-2">Pending</div>
+            <div class="stat-value text-warning mb-1">@Model.PendingRequests</div>
+            <div class="text-muted small">Waiting for action</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card h-100">
+            <div class="text-muted small fw-medium mb-2">In Progress</div>
+            <div class="stat-value text-primary mb-1">@Model.InProgressRequests</div>
+            <div class="text-muted small">Currently being handled</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card h-100">
+            <div class="text-muted small fw-medium mb-2">Resolved</div>
+            <div class="stat-value text-success mb-1">@Model.ResolvedRequests</div>
+            <div class="text-muted small">Successfully completed</div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-7">
+        <div class="campus-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <div class="eyebrow-label">Latest Activity</div>
+                    <h2 class="h5 fw-bold mb-0 text-navy">Recent Service Requests</h2>
+                </div>
+                <a asp-controller="ServiceRequests" asp-action="Index" class="text-decoration-none fw-semibold small">
+                    View all &rarr;
+                </a>
+            </div>
+
+            @if (Model.RecentRequests.Count == 0)
+            {
+                <div class="text-muted py-4 text-center">
+                    No service requests submitted yet.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table campus-table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Issue</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.RecentRequests)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-controller="ServiceRequests" asp-action="Details" asp-route-id="@item.Id"
+                                           class="fw-semibold text-decoration-none text-dark">
+                                            @item.StudentName
+                                        </a>
+                                        <div class="small text-muted">@item.Department</div>
+                                    </td>
+                                    <td>@item.Issue</td>
+                                    <td>
+                                        <partial name="_StatusBadge" model="item.Status" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="campus-card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <div class="eyebrow-label">What's Happening</div>
+                    <h2 class="h5 fw-bold mb-0 text-navy">Upcoming Events</h2>
+                </div>
+                <a asp-controller="CampusEvents" asp-action="Index" class="text-decoration-none fw-semibold small">
+                    View all &rarr;
+                </a>
+            </div>
+
+            @if (Model.UpcomingEvents.Count == 0)
+            {
+                <div class="text-muted py-4 text-center">
+                    No upcoming campus events scheduled.
+                </div>
+            }
+            else
+            {
+                <div class="d-flex flex-column gap-3">
+                    @foreach (var ev in Model.UpcomingEvents)
+                    {
+                        <div class="d-flex align-items-center gap-3 p-2 rounded-3 bg-light">
+                            <div class="event-date-pill">
+                                <span class="day">@ev.EventDate.ToString("dd")</span>
+                                <span class="month">@ev.EventDate.ToString("MMM")</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="fw-semibold text-dark text-truncate">@ev.Title</div>
+                                <div class="small text-muted text-truncate">@ev.Location &middot; @ev.EventDate.ToString("hh:mm tt")</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>

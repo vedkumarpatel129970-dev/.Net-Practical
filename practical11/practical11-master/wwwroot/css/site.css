@@ -1,0 +1,195 @@
+:root {
+    --campus-navy: #0f2b5b;
+    --campus-blue: #1d4ed8;
+    --campus-blue-light: #eff6ff;
+    --campus-bg: #f5f7fb;
+    --campus-border: #e5e9f2;
+    --campus-text: #1e293b;
+    --campus-muted: #64748b;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+.campus-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--campus-bg);
+    color: var(--campus-text);
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.text-navy {
+    color: var(--campus-navy) !important;
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--campus-navy), var(--campus-blue));
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.eyebrow-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--campus-muted);
+}
+
+.campus-card {
+    background-color: #ffffff;
+    border: 1px solid var(--campus-border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 43, 91, 0.04);
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #163a78 0%, #1d4ed8 100%);
+    border-radius: 16px;
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(29, 78, 216, 0.18);
+}
+
+.hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-side-card {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.9rem 1.25rem;
+    backdrop-filter: blur(6px);
+}
+
+.hero-sc-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.stat-card {
+    background: #ffffff;
+    border: 1px solid var(--campus-border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(15, 43, 91, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 43, 91, 0.08);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.status-progress {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-resolved {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.status-default {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+.event-date-pill {
+    min-width: 56px;
+    padding: 0.45rem 0.5rem;
+    border-radius: 10px;
+    background-color: var(--campus-blue-light);
+    color: var(--campus-blue);
+    text-align: center;
+    line-height: 1.15;
+}
+
+.event-date-pill .day {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.event-date-pill .month {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.campus-table th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--campus-muted);
+    border-bottom-color: var(--campus-border);
+    background-color: #fafbfe;
+}
+
+.campus-table td {
+    vertical-align: middle;
+    border-bottom-color: #f1f5f9;
+}
+
+.btn-navy {
+    background-color: var(--campus-navy);
+    border-color: var(--campus-navy);
+    color: #ffffff;
+}
+
+.btn-navy:hover {
+    background-color: #0b2045;
+    border-color: #0b2045;
+    color: #ffffff;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--campus-blue);
+    box-shadow: 0 0 0 0.2rem rgba(29, 78, 216, 0.15);
+}

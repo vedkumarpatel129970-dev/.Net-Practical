@@ -1,0 +1,11 @@
+@model string
+@{
+    var badgeClass = Model switch
+    {
+        "Pending" => "status-badge status-pending",
+        "In Progress" => "status-badge status-progress",
+        "Resolved" => "status-badge status-resolved",
+        _ => "status-badge status-default"
+    };
+}
+<span class="@badgeClass">@Model</span>

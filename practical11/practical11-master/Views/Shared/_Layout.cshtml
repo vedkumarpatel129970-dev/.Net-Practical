@@ -1,0 +1,96 @@
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Smart Campus</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/practical11.styles.css" asp-append-version="true" />
+</head>
+<body class="campus-body">
+    <header class="campus-header sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
+            <div class="container py-1">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-navy" asp-controller="Home" asp-action="Index">
+                    <span class="brand-badge">SC</span>
+                    <span>Smart Campus</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#campusNav"
+                        aria-controls="campusNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="campusNav">
+                    <ul class="navbar-nav align-items-md-center gap-md-2">
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Home" ? "active fw-semibold text-primary" : "text-secondary")"
+                               asp-controller="Home" asp-action="Index">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "ServiceRequests" ? "active fw-semibold text-primary" : "text-secondary")"
+                               asp-controller="ServiceRequests" asp-action="Index">Service Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "CampusEvents" ? "active fw-semibold text-primary" : "text-secondary")"
+                               asp-controller="CampusEvents" asp-action="Index">Campus Events</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-secondary" href="#" id="apiDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                API
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3" aria-labelledby="apiDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/api/requests" target="_blank" rel="noopener">
+                                        GET /api/requests
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/api/events" target="_blank" rel="noopener">
+                                        GET /api/events
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container my-4 flex-grow-1">
+        @if (TempData["Success"] is string successMsg)
+        {
+            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 rounded-3 auto-dismiss-alert" role="alert">
+                <strong>Success:</strong> @successMsg
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["Error"] is string errorMsg)
+        {
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 rounded-3" role="alert">
+                <strong>Error:</strong> @errorMsg
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <main role="main" class="pb-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="campus-footer border-top bg-white py-3 mt-auto">
+        <div class="container text-center text-muted small">
+            Smart Campus Service Portal &middot; ASP.NET Core MVC + SQL Server + REST API
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

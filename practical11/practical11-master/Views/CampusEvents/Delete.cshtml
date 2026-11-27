@@ -1,0 +1,40 @@
+@model practical11.Models.CampusEvent
+@{
+    ViewData["Title"] = $"Delete {Model.Title}";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="mb-4">
+            <div class="eyebrow-label text-danger">Confirm Deletion</div>
+            <h1 class="h2 fw-bold text-navy mb-1">Delete Campus Event</h1>
+            <p class="text-muted mb-0">This action will permanently remove the event from SQL Server.</p>
+        </div>
+
+        <div class="campus-card p-4 p-md-5 border-danger-subtle">
+            <div class="alert alert-warning border-0 rounded-3 mb-4">
+                Are you sure you want to delete <strong>@Model.Title</strong>?
+            </div>
+
+            <dl class="row gy-2 mb-4">
+                <dt class="col-sm-4 text-muted">Title</dt>
+                <dd class="col-sm-8 fw-semibold">@Model.Title</dd>
+
+                <dt class="col-sm-4 text-muted">Location</dt>
+                <dd class="col-sm-8">@Model.Location</dd>
+
+                <dt class="col-sm-4 text-muted">Event Date</dt>
+                <dd class="col-sm-8">@Model.EventDate.ToString("dd MMM yyyy, hh:mm tt")</dd>
+
+                <dt class="col-sm-4 text-muted">Description</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+            </dl>
+
+            <form asp-action="Delete" method="post" class="d-flex justify-content-end gap-2 pt-3 border-top">
+                <input type="hidden" asp-for="Id" />
+                <a asp-action="Index" class="btn btn-outline-secondary fw-semibold">Cancel</a>
+                <button type="submit" class="btn btn-danger fw-semibold px-4">Confirm Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
